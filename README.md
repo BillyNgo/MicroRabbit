@@ -28,7 +28,7 @@ This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with Rabbi
      * [Api](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Api)
        * [MicroRabbit.Banking.Api](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Api/MicroRabbit.Banking.Api)
      * [Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Application)
-       * [MicroRabbit.Banking.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Microservices/Banking/Application/MicroRabbit.Banking.Application)
+       * [MicroRabbit.Banking.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Application/MicroRabbit.Banking.Application)
      * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Data)
        * [MicroRabbit.Banking.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Data/MicroRabbit.Banking.Data)
      * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Domain)
