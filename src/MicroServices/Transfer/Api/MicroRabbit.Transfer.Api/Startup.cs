@@ -20,7 +20,7 @@ namespace MicroRabbit.Transfer.Api
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services,
             IConfiguration configuration)
         {
-                       services.AddDbContext<TransferDbContext>(options =>
+            services.AddDbContext<TransferDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("TransferDbConnection"));
             });
