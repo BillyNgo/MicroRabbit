@@ -7,6 +7,7 @@
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
 
 This is a sample for NVG Backend Guild-day: 
+
 **.NET Core Microservice architecture design pattern with RabbitMQ messaging**
 
 ![](imgs/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
