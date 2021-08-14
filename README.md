@@ -5,9 +5,9 @@
 [![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
-[![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-violet.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
-[![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-violet.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
-[![DDD pattern](https://img.shields.io/badge/DDD-pattern-violet.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
+[![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-blue.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+[![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-blue.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
+[![DDD pattern](https://img.shields.io/badge/DDD-pattern-blue.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
 This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
 
