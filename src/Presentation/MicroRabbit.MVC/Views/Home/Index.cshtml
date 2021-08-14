@@ -1,18 +1,59 @@
-﻿@{
+﻿@model MicroRabbit.MVC.Models.TransferViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to NVG Backend Guild-day</h1>
+    <p>Learn more about <a href="https://github.com/BillyNgo/MicroRabbit">this application</a>.</p>
 </div>
-
-<form action="/home/transfer" method="post">
-    <label for="FromAccount">From Account:</label>
-    <input type="text" name="FromAccount" />
-    <label for="ToAccount">To Account:</label>
-    <input type="text" name="ToAccount" />
-    <label for="TransferAmount">Amount:</label>
-    <input type="text" name="TransferAmount" />
-    <input type="submit" name="Transfer" />
+<div class="container register">
+    <div class="row">
+    </div>
+</div>
+<form id="createRequestForm" asp-action="Transfer" asp-antiforgery="true" class="needs-validation" novalidate>
+    <div class="row py-5 mt-4 align-items-center">
+        <!-- Create request Form -->
+        <div class="col-md-7 col-lg-11 ml-auto mr-auto">
+            <div class="row">
+                <!-- From Account -->
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="FromAccount" id="FromAccount" type="text" name="FromAccount" placeholder="From Account" class="form-control bg-white border-md"><br />
+                    <span asp-validation-for="FromAccount"></span>
+                </div>
+                <!-- To Account -->
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="ToAccount" id="ToAccount" type="text" name="ToAccount" placeholder="To Account" class="form-control bg-white border-md"><br />
+                    <span asp-validation-for="ToAccount"></span>
+                </div>
+                <!-- Transfer Amount -->
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-dollar-sign text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="TransferAmount" id="TransferAmount" type="text" name="TransferAmount" placeholder="Transfer Amount" class="form-control bg-white border-md"><br />
+                    <span asp-validation-for="TransferAmount"></span>
+                </div>
+                <!-- Submit Button -->
+                <div class="form-group col-lg-12 mx-auto mb-0">
+                    <input type="submit" value="Tranfer" class="btn btn-primary btn-block py-2 font-weight-bold" />
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

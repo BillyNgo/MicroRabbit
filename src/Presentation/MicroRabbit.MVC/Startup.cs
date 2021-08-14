@@ -25,14 +25,14 @@ namespace MicroRabbit.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Sets the display of the Cookie Consent banner (/Pages/Shared/_CookieConsentPartial.cshtml).
+            // Sets the display of the Cookie Consent banner (/Views/Shared/_CookieConsentPartial.cshtml).
             // This lambda determines whether user consent for non-essential cookies is needed for a given request.
             services.Configure<CookiePolicyOptions>(options => {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
             services.AddHttpClient<ITransferService, TransferService>();
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

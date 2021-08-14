@@ -33,16 +33,20 @@ namespace MicroRabbit.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Transfer(TransferViewModel model)
         {
-            TransferDto transferDto = new TransferDto()
+            if (ModelState.IsValid)
             {
-                FromAccount = model.FromAccount,
-                ToAccount = model.ToAccount,
-                TransferAmount = model.TransferAmount
-            };
+                TransferDto transferDto = new TransferDto()
+                {
+                    FromAccount = model.FromAccount,
+                    ToAccount = model.ToAccount,
+                    TransferAmount = model.TransferAmount
+                };
 
-            await _transferService.Transfer(transferDto);
+                await _transferService.Transfer(transferDto);
+            }
 
             return View("Index");
         }

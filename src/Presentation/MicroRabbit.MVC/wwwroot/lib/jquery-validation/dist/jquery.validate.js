@@ -912,8 +912,8 @@ $.extend( $.validator, {
 					this.settings.unhighlight.call( this, elements[ i ], this.settings.errorClass, this.settings.validClass );
 				}
 			}
-			this.toHide = this.toHide.not( this.toShow );
-			this.hideErrors();
+			//this.toHide = this.toHide.not( this.toShow );
+			//this.hideErrors();
 			this.addWrapper( this.toShow ).show();
 		},
 
