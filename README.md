@@ -6,9 +6,9 @@
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
 
-This is a sample for NVG Backend Guild-day: 
+This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
 
-**.NET Core Microservice architecture design pattern with RabbitMQ messaging**
+
 
 ![](imgs/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
 
