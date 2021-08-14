@@ -12,18 +12,31 @@
 
 ## Projects
 
-- MicroRabbit.Domain.Core
-- MicroRabbit.Infra.Bus
-- MicroRabbit.Infra.IoC
-- MicroRabbit.Banking.Api
-- MicroRabbit.Banking.Application
-- MicroRabbit.Banking.Data
-- MicroRabbit.Banking.Domain
-- MicroRabbit.Transfer.Api
-- MicroRabbit.Transfer.Application
-- MicroRabbit.Transfer.Data
-- MicroRabbit.Transfer.Domain
-- MicroRabbit.MVC
+ * [Domain](./Domain)
+   * [MicroRabbit.Domain.Core](./Domain/MicroRabbit.Domain.Core)
+ * [Infra.Bus](./dir2)
+   * [MicroRabbit.Domain.Core](./Domain/MicroRabbit.Infra.Bus)
+ * [Infra.Ioc](./dir2)
+   * [MicroRabbit.Domain.Core](./Domain/MicroRabbit.Infra.Ioc)
+ * [Microservices](./dir2)
+   * [Banking](./dir1/file12.ext)
+     * [Api](./dir1/file12.ext)
+       * [MicroRabbit.Banking.Api](./dir1/file12.ext)
+     * [Application](./dir1/file12.ext)
+       * [MicroRabbit.Banking.Application](./dir1/file12.ext)
+     * [Data](./dir1/file12.ext)
+       * [MicroRabbit.Banking.Data](./dir1/file12.ext)
+     * [Domain](./dir1/file12.ext)
+       * [MicroRabbit.Banking.Domain](./dir1/file12.ext)
+   * [Transfer](./dir1/file12.ext)
+     * [Api](./dir1/file12.ext)
+       * [MicroRabbit.Transfer.Api](./dir1/file12.ext)
+     * [Application](./dir1/file12.ext)
+       * [MicroRabbit.Transfer.Application](./dir1/file12.ext)
+     * [Data](./dir1/file12.ext)
+       * [MicroRabbit.Transfer.Data](./dir1/file12.ext)
+     * [Domain](./dir1/file12.ext)
+       * [MicroRabbit.Transfer.Domain](./dir1/file12.ext)
 
 ## Notable features
 
