@@ -31,13 +31,15 @@ namespace MicroRabbit.Infra.IoC
             });
 
             //Subscriptions
-            services.AddTransient<TransferEventHandler>();
+            services.AddTransient<TransferCreatedEventHandler>();
 
             //Domain Events
-            services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
+            services.AddMediatR(typeof(TransferCreatedEvent).Assembly);
+            //services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
 
             //Domain Banking Commands
-            services.AddTransient<IRequestHandler<CreateTransferCommand,bool>, TransferCommandHandler>();
+            services.AddMediatR(typeof(CreateTransferCommand).Assembly);
+            //services.AddTransient<IRequestHandler<CreateTransferCommand,bool>, TransferCommandHandler>();
 
             //Application Services
             services.AddTransient<IAccountService, AccountService>();
