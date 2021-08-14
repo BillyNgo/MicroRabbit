@@ -5,8 +5,8 @@
 [![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
-[![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-purple.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
-[![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-blue.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
+[![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-violet.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+[![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-violet.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
 
 This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
 
