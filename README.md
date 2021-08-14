@@ -37,6 +37,8 @@ This is a sample for NVG Backend Guild-day: **.NET Core Microservice architectur
        * [MicroRabbit.Transfer.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
      * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain)
        * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
+ * [Presentation](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation)
+   * [MicroRabbit.MVC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation/MicroRabbit.MVC)
 
 
 ## Notable features
