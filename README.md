@@ -9,7 +9,7 @@
 [![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-blue.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
 [![DDD pattern](https://img.shields.io/badge/DDD-pattern-blue.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
-This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
+This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with RabbitMQ messaging`
 
 
 
