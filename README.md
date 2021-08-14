@@ -7,6 +7,7 @@
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
 [![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-violet.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 [![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-violet.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
+[![DDD pattern](https://img.shields.io/badge/DDD-pattern-violet.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
 This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
 
@@ -132,6 +133,14 @@ When submitting a pull request:
 - [Microsoft.EntityFrameworkCore.Design](https://docs.microsoft.com/de-de/ef/core/)
 - [Microsoft.EntityFrameworkCore.SqlServer](https://docs.microsoft.com/de-de/ef/core/)
 - [Microsoft.EntityFrameworkCore.Tools](https://docs.microsoft.com/de-de/ef/core/)
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+
+* [DDD Patern](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
+* [Mediator Pattern](https://en.wikipedia.org/wiki/Mediator_pattern)
+* [CQRS Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 
 ---
 
