@@ -12,18 +12,32 @@
 
 ## Projects
 
-- MicroRabbit.Domain.Core
-- MicroRabbit.Infra.Bus
-- MicroRabbit.Infra.IoC
-- MicroRabbit.Banking.Api
-- MicroRabbit.Banking.Application
-- MicroRabbit.Banking.Data
-- MicroRabbit.Banking.Domain
-- MicroRabbit.Transfer.Api
-- MicroRabbit.Transfer.Application
-- MicroRabbit.Transfer.Data
-- MicroRabbit.Transfer.Domain
-- MicroRabbit.MVC
+ * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Domain)
+   * [MicroRabbit.Domain.Core](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Domain/MicroRabbit.Domain.Core)
+ * [Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Infra.Bus)
+   * [MicroRabbit.Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Infra.Bus/MicroRabbit.Infra.Bus)
+ * [Infra.Ioc](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Infra.Ioc)
+   * [MicroRabbit.Infra.IoC](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroRabbit.Infra.IoC)
+ * [Microservices](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices)
+   * [Banking](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking)
+     * [Api](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Api)
+       * [MicroRabbit.Banking.Api](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Api/MicroRabbit.Banking.Api)
+     * [Application](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Application)
+       * [MicroRabbit.Banking.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Microservices/Banking/Application/MicroRabbit.Banking.Application)
+     * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Data)
+       * [MicroRabbit.Banking.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Data/MicroRabbit.Banking.Data)
+     * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Domain)
+       * [MicroRabbit.Banking.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Domain/MicroRabbit.Banking.Domain)
+  * [Transfer](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer)
+     * [Api](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Api)
+       * [MicroRabbit.Transfer.Api](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Api/MicroRabbit.Transfer.Api)
+     * [Application](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Application)
+       * [MicroRabbit.Transfer.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Application/MicroRabbit.Transfer.Application)
+     * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Data)
+       * [MicroRabbit.Transfer.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
+     * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Domain)
+       * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
+
 
 ## Notable features
 
