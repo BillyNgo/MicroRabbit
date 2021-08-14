@@ -1,5 +1,8 @@
 using System;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
+using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +15,48 @@ using Microsoft.OpenApi.Models;
 
 namespace MicroRabbit.Banking.Api
 {
+    public static class StartupExtension
+    {
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddDbContext<BankingDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("BankingDbConnection"));
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Banking MicroService ",
+                    Description = "A simple banking API",
+                    Version = "v1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Billy Ngo",
+                        Email = "datngo@nvg.vn",
+                        Url = new Uri("https://nvg.com")
+                    }
+                });
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddFluentValidation(this IServiceCollection services)
+        {
+            services.AddFluentValidation(s =>
+            {
+                s.RegisterValidatorsFromAssemblyContaining<AccountTransfer>();
+                s.DisableDataAnnotationsValidation = true;
+            });
+            return services;
+        }
+    }
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -24,29 +69,11 @@ namespace MicroRabbit.Banking.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BankingDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection"));
-            });
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Banking MicroService ", 
-                    Description = "A simple banking API",
-                    Version = "v1",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Billy Ngo",
-                        Email = "datngo@nvg.vn",
-                        Url = new Uri("https://nvg.com")
-                    }
-                });
-            });
-
-            services.AddMediatR(typeof(Startup));
+            services.AddCustomDbContext(Configuration);
+            services.AddFluentValidation()
+                    .AddSwagger()
+                    .AddMediatR(typeof(Startup))
+                    .AddControllers();
 
             RegisterServices(services);
         }
