@@ -36,7 +36,7 @@
      * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Data)
        * [MicroRabbit.Transfer.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
      * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Domain)
-       * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Banking/Domain/MicroRabbit.Transfer.Domain)
+       * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
 
 
 ## Notable features
