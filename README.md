@@ -45,10 +45,17 @@ This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with Rabbi
  * [Presentation](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation)
    * [MicroRabbit.MVC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation/MicroRabbit.MVC)
 
+## Architecture:
 
-## Notable features
-
-- Microservice architecture design pattern
+- Full architecture with responsibility separation concerns, SOLID and Clean Code
+- Domain Driven Design (Layers and Domain Model Pattern)
+- Domain Events
+- Domain Notification
+- Domain Validations
+- CQRS (Imediate Consistency)
+- Event Sourcing (To be implemented)
+- Unit of Work
+- Repository
 - RabbitMQ messaging
 
 ## Project notes
