@@ -10,7 +10,7 @@
 
 ![](imgs/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
 
-## Projects
+## Projects Treeview
 
  * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain)
    * [MicroRabbit.Domain.Core](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain/MicroRabbit.Domain.Core)
