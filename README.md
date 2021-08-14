@@ -5,6 +5,7 @@
 [![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
+[![CQRS Pattern](https://img.shields.io/badge/cqrs-pattern-purple.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 
 This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
 
