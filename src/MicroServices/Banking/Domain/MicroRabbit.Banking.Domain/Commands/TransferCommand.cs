@@ -2,7 +2,7 @@
 
 namespace MicroRabbit.Banking.Domain.Commands
 {
-    public abstract class TransferCommand:Command
+    public abstract class TransferCommand : Command
     {
         public int From { get; set; }
         public int To { get; set; }

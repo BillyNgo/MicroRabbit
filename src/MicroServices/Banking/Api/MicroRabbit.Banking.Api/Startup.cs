@@ -69,18 +69,18 @@ namespace MicroRabbit.Banking.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCustomDbContext(Configuration);
-            services.AddFluentValidation()
+            services.AddCustomDbContext(Configuration)
+                    .AddFluentValidation()
                     .AddSwagger()
                     .AddMediatR(typeof(Startup))
                     .AddControllers();
 
-            RegisterServices(services);
+            RegisterServices(services, Configuration);
         }
 
-        private void RegisterServices(IServiceCollection services)
+        private void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
-            DependencyContainer.RegisterServices(services);
+            DependencyContainer.RegisterServices(services, configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

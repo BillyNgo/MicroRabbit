@@ -7,7 +7,7 @@ using MicroRabbit.Domain.Core.Bus;
 
 namespace MicroRabbit.Banking.Domain.CommandHandlers
 {
-    public class CreateTransferCommandHandler:IRequestHandler<CreateTransferCommand,bool>
+    public class CreateTransferCommandHandler : IRequestHandler<CreateTransferCommand,bool>
     {
         private readonly IEventBus _bus;
 

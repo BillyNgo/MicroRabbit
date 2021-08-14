@@ -2,7 +2,7 @@
 
 namespace MicroRabbit.Transfer.Domain.Events
 {
-    public class TransferCreatedEvent:Event
+    public class TransferCreatedEvent : Event
     {
         public int From { get; private set; }
         public int To { get; private set; }

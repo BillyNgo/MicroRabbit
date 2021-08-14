@@ -8,7 +8,7 @@ using MicroRabbit.Domain.Core.Bus;
 
 namespace MicroRabbit.Banking.Application.Services
 {
-    public class AccountService:IAccountService
+    public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IEventBus _bus;

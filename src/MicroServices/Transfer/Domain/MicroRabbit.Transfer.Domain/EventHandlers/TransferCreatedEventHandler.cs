@@ -6,7 +6,7 @@ using MicroRabbit.Transfer.Domain.Models;
 
 namespace MicroRabbit.Transfer.Domain.EventHandlers
 {
-    public class TransferCreatedEventHandler:IEventHandler<TransferCreatedEvent>
+    public class TransferCreatedEventHandler : IEventHandler<TransferCreatedEvent>
     {
         private readonly ITransferRepository _transferRepository;
         public TransferCreatedEventHandler(ITransferRepository transferRepository)

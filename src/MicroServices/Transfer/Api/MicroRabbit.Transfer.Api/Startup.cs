@@ -15,6 +15,40 @@ using Microsoft.OpenApi.Models;
 
 namespace MicroRabbit.Transfer.Api
 {
+    public static class StartupExtension
+    {
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+                       services.AddDbContext<TransferDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("TransferDbConnection"));
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Transfer MicroService",
+                    Description = "A simple transfer API ",
+                    Version = "v1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Billy Ngo",
+                        Email = "datngo@nvg.vn",
+                        Url = new Uri("https://nvg.com")
+                    }
+
+                });
+            });
+            return services;
+        }
+    }
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -27,36 +61,16 @@ namespace MicroRabbit.Transfer.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TransferDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("TransferDbConnection"));
-            });
+            services.AddCustomDbContext(Configuration)
+                .AddSwagger()
+                .AddMediatR(typeof(Startup))
+                .AddControllers();
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Transfer MicroService",
-                    Description = "A simple transfer API ",
-                    Version = "v1" ,
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Billy Ngo",
-                        Email = "datngo@nvg.vn",
-                        Url = new Uri("https://nvg.com")
-                    }
-
-                });
-            });
-
-            services.AddMediatR(typeof(Startup));
-
-            RegisterServices(services);
+            RegisterServices(services, Configuration);
         }
-        private void RegisterServices(IServiceCollection services)
+        private void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
-            DependencyContainer.RegisterServices(services);
+            DependencyContainer.RegisterServices(services, configuration);
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TransferDbContext transferDbContext)

@@ -14,19 +14,21 @@ using RabbitMQ.Client.Events;
 
 namespace MicroRabbit.Infra.Bus
 {
-    public sealed class RabbitMQBus:IEventBus
+    public sealed class RabbitMqBus : IEventBus
     {
         private readonly IMediator _mediator;
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _evenTypes;
         private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly string _hostName;
 
-        public RabbitMQBus(IMediator mediator, IServiceScopeFactory serviceScopeFactory)
+        public RabbitMqBus(IMediator mediator, IServiceScopeFactory serviceScopeFactory, string hostName)
         {
             _mediator = mediator;
             _serviceScopeFactory = serviceScopeFactory;
             _handlers = new Dictionary<string, List<Type>>();
             _evenTypes = new List<Type>();
+            _hostName = hostName;
         }
 
         public Task SendCommand<T>(T command) where T : Command
@@ -38,7 +40,7 @@ namespace MicroRabbit.Infra.Bus
         {
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost"
+                HostName = _hostName
             };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -81,7 +83,7 @@ namespace MicroRabbit.Infra.Bus
         {
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost",
+                HostName = _hostName,
                 DispatchConsumersAsync = true
             };
 

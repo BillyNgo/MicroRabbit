@@ -15,19 +15,20 @@ using MicroRabbit.Transfer.Data.Repository;
 using MicroRabbit.Transfer.Domain.EventHandlers;
 using MicroRabbit.Transfer.Domain.Events;
 using MicroRabbit.Transfer.Domain.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MicroRabbit.Infra.IoC
 {
     public class DependencyContainer
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
             //Domain Bus
-            services.AddTransient<IEventBus, RabbitMQBus>(sp =>
+            services.AddTransient<IEventBus, RabbitMqBus>(sp =>
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
-                return new RabbitMQBus(sp.GetService<IMediator>(),scopeFactory);
+                return new RabbitMqBus(sp.GetService<IMediator>(), scopeFactory, configuration.GetConnectionString("RabbitMQConnection"));
             });
 
             //Subscriptions

@@ -6,7 +6,7 @@ using MicroRabbit.Transfer.Domain.Models;
 
 namespace MicroRabbit.Transfer.Application.Services
 {
-    public class TransferService:ITransferService
+    public class TransferService : ITransferService
     {
         private readonly IEventBus _bus;
         private readonly ITransferRepository _transferRepository;
