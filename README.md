@@ -19,7 +19,7 @@ This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with Rabbi
 
  * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain)
    * [MicroRabbit.Domain.Core](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain/MicroRabbit.Domain.Core)
- * [Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroRabbit/Infra.Bus)
+ * [Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Infra.Bus)
    * [MicroRabbit.Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Infra.Bus/MicroRabbit.Infra.Bus)
  * [Infra.Ioc](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroRabbit/Infra.Ioc)
    * [MicroRabbit.Infra.IoC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroRabbit.Infra.IoC)
