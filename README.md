@@ -2,7 +2,7 @@
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/dpedwards/dotnet-core-blockchain-advanced/master/LICENSE)
 [![.NET Core](https://img.shields.io/badge/dotnet%20core-%3E%3D%202.2-blue.svg)](https://dotnet.microsoft.com/download)
-[![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
+[![Swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://swagger.io/)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
 [![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-blue.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
