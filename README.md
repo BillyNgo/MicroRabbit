@@ -5,8 +5,13 @@
 [![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
+[![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-blue.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+[![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-blue.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
+[![DDD pattern](https://img.shields.io/badge/DDD-pattern-blue.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
-This is a sample for NVG Backend Guild-day: **.NET Core Microservice architecture design pattern with RabbitMQ messaging**
+This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
+
+
 
 ![](imgs/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
 
@@ -37,6 +42,8 @@ This is a sample for NVG Backend Guild-day: **.NET Core Microservice architectur
        * [MicroRabbit.Transfer.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
      * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain)
        * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
+ * [Presentation](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation)
+   * [MicroRabbit.MVC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation/MicroRabbit.MVC)
 
 
 ## Notable features
@@ -126,6 +133,14 @@ When submitting a pull request:
 - [Microsoft.EntityFrameworkCore.Design](https://docs.microsoft.com/de-de/ef/core/)
 - [Microsoft.EntityFrameworkCore.SqlServer](https://docs.microsoft.com/de-de/ef/core/)
 - [Microsoft.EntityFrameworkCore.Tools](https://docs.microsoft.com/de-de/ef/core/)
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+
+* [DDD Patern](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
+* [Mediator Pattern](https://en.wikipedia.org/wiki/Mediator_pattern)
+* [CQRS Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 
 ---
 
