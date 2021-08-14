@@ -8,7 +8,7 @@
 
 .NET Core Microservice architecture design pattern with RabbitMQ messaging
 
-![](MicroRabbit/images/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
+![](images/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
 
 ## Projects
 
@@ -47,13 +47,13 @@
 ## Project notes
 
 - **MicroRabbit.Banking.Api** project is listening on localhost port `5001` (https) and `5000` (http)
-![](MicroRabbit/images/Banking_Microservice_Swagger_UI.png)
+![](images/Banking_Microservice_Swagger_UI.png)
 
 - **MicroRabbit.Transfer.Api** project is listening on localhost port `5003` (https) and `5002` (http)
-![](MicroRabbit/images/Transfer_Microservice_Swagger_UI.png)
+![](images/Transfer_Microservice_Swagger_UI.png)
 
 - **MicroRabbit.MVC** project is listeing on localhost port `5005` (https) and `5004` (http)
-![](MicroRabbit/images/Banking_Microservice_MVC.png)
+![](images/Banking_Microservice_MVC.png)
 
 ### Installation
 
@@ -87,7 +87,7 @@ Other RabbitMQ commands:
 - Set new permission `rabbitmqctl set_permission -p / username ".*" ".*" ".*"`
 
 **RabbitMQ dashboard**
-![](MicroRabbit/images/Overview_RabbitMQ%20Management.png)
+![](images/Overview_RabbitMQ%20Management.png)
 
 ### Pull Requests
 
