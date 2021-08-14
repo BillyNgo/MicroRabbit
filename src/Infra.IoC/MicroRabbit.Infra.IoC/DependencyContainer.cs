@@ -28,7 +28,7 @@ namespace MicroRabbit.Infra.IoC
             services.AddTransient<IEventBus, RabbitMqBus>(sp =>
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
-                return new RabbitMqBus(sp.GetService<IMediator>(), scopeFactory, configuration.GetConnectionString("RabbitMQConnection"));
+                return new RabbitMqBus(sp.GetService<IMediator>(), scopeFactory, configuration.GetSection("MessageBroker:Host").Value);
             });
 
             //Subscriptions

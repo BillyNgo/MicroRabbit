@@ -13,7 +13,7 @@ namespace MicroRabbit.MVC.Models
 
         [Required]
         [Display(Name = "To Account")]
-        public int ToAccount { get; internal set; }
+        public int ToAccount { get; set; }
 
         [Required]
         [Display(Name = "Transfer Amount")]
