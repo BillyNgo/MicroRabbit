@@ -7,13 +7,6 @@ using MicroRabbit.MVC.Models.DTO;
 
 namespace MicroRabbit.MVC.Controllers
 {
-    /**
-     * Home api controller
-     * 
-     * @author D. P. Edwards
-     * @license MIT
-     * @version 1.0
-     */ 
     public class HomeController : Controller
     {
         private readonly ITransferService _transferService;
