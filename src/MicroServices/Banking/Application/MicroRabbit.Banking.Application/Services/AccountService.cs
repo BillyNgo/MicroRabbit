@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using MicroRabbit.Banking.Application.Interfaces;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Domain.Commands;
@@ -11,20 +13,23 @@ namespace MicroRabbit.Banking.Application.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly IMapper _mapper;
         private readonly IEventBus _bus;
 
-        public AccountService(IAccountRepository accountRepository, IEventBus bus)
+        public AccountService(IAccountRepository accountRepository, IEventBus bus, IMapper mapper)
         {
             _accountRepository = accountRepository;
             _bus = bus;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Account> GetAccounts()
+        public List<AccountDto> GetAccounts()
         {
-            return _accountRepository.GetAccounts();
+            var accountListDto = _mapper.Map<List<Account>, List<AccountDto>>(_accountRepository.GetAccounts().ToList());
+            return accountListDto;
         }
 
-        public void Transfer(AccountTransfer accountTransfer)
+        public void Transfer(AccountTransferDto accountTransfer)
         {
             var createTransferCommand = new CreateTransferCommand(
                 accountTransfer.FromAccount,

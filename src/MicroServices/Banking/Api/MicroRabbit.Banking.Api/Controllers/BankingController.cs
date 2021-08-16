@@ -19,13 +19,13 @@ namespace MicroRabbit.Banking.Api.Controllers
 
         // GET api/banking
         [HttpGet]
-        public ActionResult<IEnumerable<Account>> Get()
+        public ActionResult<List<Account>> Get()
         {
             return Ok(_accountService.GetAccounts());
         }
         
         [HttpPost]
-        public IActionResult Post([FromBody] AccountTransfer accountTransfer)
+        public IActionResult Post([FromBody] AccountTransferDto accountTransfer)
         {
             _accountService.Transfer(accountTransfer);
             return Ok(accountTransfer);

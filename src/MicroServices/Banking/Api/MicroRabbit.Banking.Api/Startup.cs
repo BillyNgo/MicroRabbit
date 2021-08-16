@@ -1,7 +1,9 @@
 using System;
+using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using MicroRabbit.Banking.Api.Infrastructure.Mapper;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.IoC;
@@ -51,9 +53,23 @@ namespace MicroRabbit.Banking.Api
         {
             services.AddFluentValidation(s =>
             {
-                s.RegisterValidatorsFromAssemblyContaining<AccountTransfer>();
+                s.RegisterValidatorsFromAssemblyContaining<AccountTransferDto>();
                 s.DisableDataAnnotationsValidation = true;
             });
+            return services;
+        }
+
+        public static IServiceCollection AddAutoMapperService(this IServiceCollection services)
+        {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ApiAutoMappingProfile());
+            });
+
+            var mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             return services;
         }
     }
@@ -72,6 +88,7 @@ namespace MicroRabbit.Banking.Api
             services.AddCustomDbContext(Configuration)
                     .AddFluentValidation()
                     .AddSwagger()
+                    .AddAutoMapperService()
                     .AddMediatR(typeof(Startup))
                     .AddControllers();
 

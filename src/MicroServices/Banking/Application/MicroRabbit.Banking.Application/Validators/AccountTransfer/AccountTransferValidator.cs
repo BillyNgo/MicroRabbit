@@ -5,7 +5,7 @@ namespace MicroRabbit.Banking.Application.Validators.AccountTransfer
     /// <summary>
     /// Regular command validation using Fluent Validation
     /// </summary>
-    public class AccountTransferValidator : AbstractValidator<Models.AccountTransfer>
+    public class AccountTransferValidator : AbstractValidator<Models.AccountTransferDto>
     {
         public AccountTransferValidator()
         {
