@@ -2,14 +2,14 @@
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/dpedwards/dotnet-core-blockchain-advanced/master/LICENSE)
 [![.NET Core](https://img.shields.io/badge/dotnet%20core-%3E%3D%202.2-blue.svg)](https://dotnet.microsoft.com/download)
-[![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
+[![Swagger](https://img.shields.io/badge/Swagger-lightgreen.svg)](https://swagger.io/)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![erlang](https://img.shields.io/badge/erlang-purple.svg)](https://www.erlang.org/downloads)
 [![CQRS pattern](https://img.shields.io/badge/CQRS-pattern-blue.svg)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
 [![Mediator pattern](https://img.shields.io/badge/Mediator-pattern-blue.svg)](https://en.wikipedia.org/wiki/Mediator_pattern)
 [![DDD pattern](https://img.shields.io/badge/DDD-pattern-blue.svg)](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
-This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with RabbitMQ messaging**
+This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with RabbitMQ messaging`
 
 
 
@@ -17,33 +17,33 @@ This is a sample for NVG Backend Guild-day:  **.NET Core Microservice with Rabbi
 
 ## Projects Treeview
 
- * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain)
-   * [MicroRabbit.Domain.Core](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Domain/MicroRabbit.Domain.Core)
- * [Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Infra.Bus)
-   * [MicroRabbit.Infra.Bus](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Infra.Bus/MicroRabbit.Infra.Bus)
- * [Infra.Ioc](https://github.com/BillyNgo/MicroRabbit/tree/master/MicroRabbit/Infra.Ioc)
-   * [MicroRabbit.Infra.IoC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroRabbit.Infra.IoC)
- * [Microservices](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices)
-   * [Banking](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking)
-     * [Api](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Api)
-       * [MicroRabbit.Banking.Api](https://github.com/BillyNgo/MicroRabbit/tree/master/srcsrc/MicroServices/Banking/Api/MicroRabbit.Banking.Api)
-     * [Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Application)
-       * [MicroRabbit.Banking.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Microservices/Banking/Application/MicroRabbit.Banking.Application)
-     * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Data)
-       * [MicroRabbit.Banking.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Data/MicroRabbit.Banking.Data)
-     * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Domain)
-       * [MicroRabbit.Banking.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Banking/Domain/MicroRabbit.Banking.Domain)
-   * [Transfer](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer)
-     * [Api](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Api)
-       * [MicroRabbit.Transfer.Api](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Api/MicroRabbit.Transfer.Api)
-     * [Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Application)
-       * [MicroRabbit.Transfer.Application](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Application/MicroRabbit.Transfer.Application)
-     * [Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Data)
-       * [MicroRabbit.Transfer.Data](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
-     * [Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain)
-       * [MicroRabbit.Transfer.Domain](https://github.com/BillyNgo/MicroRabbit/tree/master/src/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
- * [Presentation](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation)
-   * [MicroRabbit.MVC](https://github.com/BillyNgo/MicroRabbit/tree/master/src/Presentation/MicroRabbit.MVC)
+ * [Domain](./src/Domain)
+   * [MicroRabbit.Domain.Core](./src/Domain/MicroRabbit.Domain.Core)
+ * [Infra.Bus](./src/Infra.Bus)
+   * [MicroRabbit.Infra.Bus](./src/Infra.Bus/MicroRabbit.Infra.Bus)
+ * [Infra.Ioc](./src/Infra.IoC)
+   * [MicroRabbit.Infra.IoC](./src/Infra.IoC/MicroRabbit.Infra.IoC)
+ * [Microservices](./src/MicroServices)
+   * [Banking](./src/MicroServices/Banking)
+     * [Api](./src/MicroServices/Banking/Api)
+       * [MicroRabbit.Banking.Api](./src/MicroServices/Banking/Api/MicroRabbit.Banking.Api)
+     * [Application](./src/MicroServices/Banking/Application)
+       * [MicroRabbit.Banking.Application](./src/MicroServices/Banking/Application/MicroRabbit.Banking.Application)
+     * [Data](./src/MicroServices/Banking/Data)
+       * [MicroRabbit.Banking.Data](./src/MicroServices/Banking/Data/MicroRabbit.Banking.Data)
+     * [Domain](./src/MicroServices/Banking/Domain)
+       * [MicroRabbit.Banking.Domain](./src/MicroServices/Banking/Domain/MicroRabbit.Banking.Domain)
+   * [Transfer](./src/MicroServices/Transfer)
+     * [Api](./src/MicroServices/Transfer/Api)
+       * [MicroRabbit.Transfer.Api](./src/MicroServices/Transfer/Api/MicroRabbit.Transfer.Api)
+     * [Application](./src/MicroServices/Transfer/Application)
+       * [MicroRabbit.Transfer.Application](./src/MicroServices/Transfer/Application/MicroRabbit.Transfer.Application)
+     * [Data](./src/MicroServices/Transfer/Data)
+       * [MicroRabbit.Transfer.Data](./src/MicroServices/Transfer/Data/MicroRabbit.Transfer.Data)
+     * [Domain](./src/MicroServices/Transfer/Domain)
+       * [MicroRabbit.Transfer.Domain](./src/MicroServices/Transfer/Domain/MicroRabbit.Transfer.Domain)
+ * [Presentation](./src/Presentation)
+   * [MicroRabbit.MVC](./src/Presentation/MicroRabbit.MVC)
 
 ## Architecture:
 
