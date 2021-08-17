@@ -4,7 +4,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using MicroRabbit.Domain.Core.Bus;
-using MicroRabbit.Infra.IoC;
+using MicroRabbit.Infra.CrossCutting.Ioc;
 using MicroRabbit.Transfer.Api.Infrastructure.Mapper;
 using MicroRabbit.Transfer.Application.Behaviors;
 using MicroRabbit.Transfer.Application.Models;

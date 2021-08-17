@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A7ED050A-1B01-45B0-B3F3-43C3ED7D138E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Bus", "Infra.Bus", "{3A950F2D-ED1E-4EC9-AC8E-E3B1AE6E2EFF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.CrossCutting.Bus", "Infra.CrossCutting.Bus", "{3A950F2D-ED1E-4EC9-AC8E-E3B1AE6E2EFF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.IoC", "Infra.IoC", "{78C75D91-238A-481C-BEB7-3B5F6F720C33}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.CrossCutting.IoC", "Infra.CrossCutting.IoC", "{78C75D91-238A-481C-BEB7-3B5F6F720C33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Domain.Core", "Domain\MicroRabbit.Domain.Core\MicroRabbit.Domain.Core.csproj", "{4A00741C-A435-4CC3-BBD2-7040BF387AC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Infra.Bus", "Infra.Bus\MicroRabbit.Infra.Bus\MicroRabbit.Infra.Bus.csproj", "{217AFEAD-16D9-4312-8418-538B509F9EBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Infra.CrossCutting.Bus", "Infra.CrossCutting.Bus\MicroRabbit.Infra.Bus\MicroRabbit.Infra.CrossCutting.Bus.csproj", "{217AFEAD-16D9-4312-8418-538B509F9EBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Infra.IoC", "Infra.IoC\MicroRabbit.Infra.IoC\MicroRabbit.Infra.IoC.csproj", "{8962DC44-FFAA-4F3C-870E-335ADC76C63F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Infra.CrossCutting.IoC", "Infra.CrossCutting.IoC\MicroRabbit.Infra.IoC\MicroRabbit.Infra.CrossCutting.IoC.csproj", "{8962DC44-FFAA-4F3C-870E-335ADC76C63F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Banking", "Banking", "{CC1D9869-FB56-4ED0-A43B-E45D89136BA0}"
 EndProject

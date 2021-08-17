@@ -7,7 +7,7 @@ using MicroRabbit.Banking.Api.Infrastructure.Mapper;
 using MicroRabbit.Banking.Application.Behaviors;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Data.Context;
-using MicroRabbit.Infra.IoC;
+using MicroRabbit.Infra.CrossCutting.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

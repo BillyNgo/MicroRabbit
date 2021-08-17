@@ -5,7 +5,7 @@ using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Banking.Data.Repository;
 using MicroRabbit.Banking.Domain.Interfaces;
 using MicroRabbit.Domain.Core.Bus;
-using MicroRabbit.Infra.Bus;
+using MicroRabbit.Infra.CrossCutting.Bus;
 using MicroRabbit.Transfer.Application.Interfaces;
 using MicroRabbit.Transfer.Application.Services;
 using MicroRabbit.Transfer.Data.Context;
@@ -16,7 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace MicroRabbit.Infra.IoC
+namespace MicroRabbit.Infra.CrossCutting.Ioc
 {
     public class DependencyContainer
     {

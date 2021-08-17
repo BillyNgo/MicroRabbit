@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace MicroRabbit.Infra.Bus
+namespace MicroRabbit.Infra.CrossCutting.Bus
 {
     public sealed class RabbitMqBus : IEventBus
     {
