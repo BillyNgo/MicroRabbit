@@ -8,8 +8,8 @@ namespace MicroRabbit.Banking.Api.Infrastructure.Mapper
     {
         public ApiAutoMappingProfile()
         {
-            CreateMap<Account, AccountDto>();
-            CreateMap<AccountDto, Account>();
+            CreateMap<Account, AccountViewModel>();
+            CreateMap<AccountViewModel, Account>();
         }
     }
 }

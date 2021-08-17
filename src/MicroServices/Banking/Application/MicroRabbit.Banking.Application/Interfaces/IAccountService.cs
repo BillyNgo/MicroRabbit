@@ -7,7 +7,7 @@ namespace MicroRabbit.Banking.Application.Interfaces
 {
     public interface IAccountService
     {
-        Task<List<AccountDto>> GetAccounts();
-        void Transfer(TransferDto transfer);
+        Task<List<AccountViewModel>> GetAccounts();
+        void Transfer(TransferViewModel transfer);
     }
 }

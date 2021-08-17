@@ -6,11 +6,8 @@
 
   <ItemGroup>
     <Compile Remove="CommandHandlers\**" />
-    <Compile Remove="Commands\**" />
     <EmbeddedResource Remove="CommandHandlers\**" />
-    <EmbeddedResource Remove="Commands\**" />
     <None Remove="CommandHandlers\**" />
-    <None Remove="Commands\**" />
   </ItemGroup>
 
   <ItemGroup>

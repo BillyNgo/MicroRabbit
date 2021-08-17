@@ -57,7 +57,7 @@ namespace MicroRabbit.Banking.Api
         {
             services.AddFluentValidation(s =>
             {
-                s.RegisterValidatorsFromAssemblyContaining<TransferDto>();
+                s.RegisterValidatorsFromAssemblyContaining<TransferViewModel>();
                 s.DisableDataAnnotationsValidation = true;
             });
             return services;
@@ -79,13 +79,13 @@ namespace MicroRabbit.Banking.Api
 
         public static IServiceCollection AddMediatRService(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.Queries.GetAllAccountQuery).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Domain.Commands.CreateTransferCommandHandler).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
             AssemblyScanner
-                .FindValidatorsInAssembly(typeof(Application.Queries.GetAllAccountQuery).Assembly)
+                .FindValidatorsInAssembly(typeof(Domain.Commands.CreateTransferCommandHandler).Assembly)
                 .ForEach(pair =>
                 {
-                    // RegisterValidatorsFromAssemblyContaing does this:
+                    // RegisterValidatorsFromAssemblyContaining does this:
                     services.Add(ServiceDescriptor.Transient(pair.InterfaceType, pair.ValidatorType));
                     // Also register it as its concrete type as well as the interface type
                     services.Add(ServiceDescriptor.Transient(pair.ValidatorType, pair.ValidatorType));

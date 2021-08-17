@@ -2,7 +2,7 @@
 
 namespace MicroRabbit.Banking.Application.Models
 {
-    public class TransferDto : Command
+    public class TransferViewModel : Command
     {
         public int FromAccount { get; set; }
         public int ToAccount { get; set; }

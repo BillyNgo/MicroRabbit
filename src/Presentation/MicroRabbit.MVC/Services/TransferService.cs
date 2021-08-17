@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using MicroRabbit.MVC.Models.DTO;
+using MicroRabbit.MVC.Models;
 using Newtonsoft.Json;
 
 namespace MicroRabbit.MVC.Services
@@ -14,9 +14,9 @@ namespace MicroRabbit.MVC.Services
             _apiClient = apiClient;
         }
 
-        public async Task Transfer(TransferDto transferDto)
+        public async Task Transfer(TransferViewModel transferDto)
         {
-            var uri = "https://localhost:5001/api/Banking";
+            var uri = "https://localhost:5001/api/Account";
             var transferContent = new StringContent(JsonConvert.SerializeObject(transferDto),
                                             System.Text.Encoding.UTF8, "application/json");
             var response = await _apiClient.PostAsync(uri, transferContent);

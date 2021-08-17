@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MicroRabbit.Banking.Application.Models
 {
-    public class AccountDto
+    public class AccountViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

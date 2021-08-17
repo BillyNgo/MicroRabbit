@@ -10,8 +10,8 @@ namespace MicroRabbit.Transfer.Api.Infrastructure.Mapper
     {
         public ApiAutoMappingProfile()
         {
-            CreateMap<TransferLog, TransferLogDto>();
-            CreateMap<TransferLogDto, TransferLog>();
+            CreateMap<TransferLog, TransferLogViewModel>();
+            CreateMap<TransferLogViewModel, TransferLog>();
         }
     }
 }

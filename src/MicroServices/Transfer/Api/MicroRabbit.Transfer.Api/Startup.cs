@@ -7,10 +7,10 @@ using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Infra.IoC;
 using MicroRabbit.Transfer.Api.Infrastructure.Mapper;
 using MicroRabbit.Transfer.Application.Behaviors;
-using MicroRabbit.Transfer.Application.Commands;
-using MicroRabbit.Transfer.Application.Events;
 using MicroRabbit.Transfer.Application.Models;
 using MicroRabbit.Transfer.Data.Context;
+using MicroRabbit.Transfer.Domain.Commands;
+using MicroRabbit.Transfer.Domain.Events;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -61,7 +61,7 @@ namespace MicroRabbit.Transfer.Api
         {
             services.AddFluentValidation(s =>
             {
-                s.RegisterValidatorsFromAssemblyContaining<TransferLogDto>();
+                s.RegisterValidatorsFromAssemblyContaining<TransferLogViewModel>();
                 s.DisableDataAnnotationsValidation = true;
             });
             return services;
@@ -83,13 +83,13 @@ namespace MicroRabbit.Transfer.Api
 
         public static IServiceCollection AddMediatRService(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.Queries.GetAllTransferLogQuery).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Domain.Commands.TransferCreatedEventHandler).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
             AssemblyScanner
-                .FindValidatorsInAssembly(typeof(Application.Queries.GetAllTransferLogQuery).Assembly)
+                .FindValidatorsInAssembly(typeof(Domain.Commands.TransferCreatedEventHandler).Assembly)
                 .ForEach(pair =>
                 {
-                    // RegisterValidatorsFromAssemblyContaing does this:
+                    // RegisterValidatorsFromAssemblyContaining does this:
                     services.Add(ServiceDescriptor.Transient(pair.InterfaceType, pair.ValidatorType));
                     // Also register it as its concrete type as well as the interface type
                     services.Add(ServiceDescriptor.Transient(pair.ValidatorType, pair.ValidatorType));

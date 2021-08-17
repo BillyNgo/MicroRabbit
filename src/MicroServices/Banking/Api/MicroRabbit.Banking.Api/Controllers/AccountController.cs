@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
-using MicroRabbit.Banking.Application.Commands;
 using MicroRabbit.Banking.Application.Interfaces;
 using MicroRabbit.Banking.Application.Models;
-using MicroRabbit.Banking.Application.Queries;
+using MicroRabbit.Banking.Domain.Commands;
 using MicroRabbit.Banking.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,12 +12,12 @@ namespace MicroRabbit.Banking.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BankingController : ControllerBase
+    public class AccountController : ControllerBase
     {
-        private readonly ILogger<BankingController> _logger;
+        private readonly ILogger<AccountController> _logger;
         private readonly IAccountService _accountService;
         private readonly IMediator _mediator;
-        public BankingController(IAccountService accountService, IMediator mediator, ILogger<BankingController> logger)
+        public AccountController(IAccountService accountService, IMediator mediator, ILogger<AccountController> logger)
         {
             _accountService = accountService;
             _mediator = mediator;
@@ -29,20 +28,15 @@ namespace MicroRabbit.Banking.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Account>>> Get()
         {
-            var results = await _mediator.Send(new GetAllAccountQuery());
+            var results = await _accountService.GetAccounts();
             return Ok(results);
         }
         
         [HttpPost]
-        public async Task<ActionResult<bool>> Post([FromBody] TransferDto accountTransfer)
+        public IActionResult Post([FromBody] TransferViewModel accountTransfer)
         {
-            var results = await _mediator.Send(new CreateTransferCommand(
-                fromAccount: accountTransfer.FromAccount,
-                toAccount: accountTransfer.ToAccount,
-                transferAmount: accountTransfer.TransferAmount
-                ));
-
-            return Ok(results);
+            _accountService.Transfer(accountTransfer);
+            return Ok(accountTransfer);
         }
         
     }

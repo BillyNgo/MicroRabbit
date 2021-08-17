@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MicroRabbit.MVC.Models;
 using MicroRabbit.MVC.Services;
-using MicroRabbit.MVC.Models.DTO;
 
 namespace MicroRabbit.MVC.Controllers
 {
@@ -38,14 +37,7 @@ namespace MicroRabbit.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                TransferDto transferDto = new TransferDto()
-                {
-                    FromAccount = model.FromAccount,
-                    ToAccount = model.ToAccount,
-                    TransferAmount = model.TransferAmount
-                };
-
-                await _transferService.Transfer(transferDto);
+                await _transferService.Transfer(model);
             }
 
             return View("Index");

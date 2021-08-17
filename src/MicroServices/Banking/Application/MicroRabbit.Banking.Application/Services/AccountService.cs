@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using MicroRabbit.Banking.Application.Commands;
 using MicroRabbit.Banking.Application.Interfaces;
 using MicroRabbit.Banking.Application.Models;
+using MicroRabbit.Banking.Domain.Commands;
 using MicroRabbit.Banking.Domain.Interfaces;
 using MicroRabbit.Banking.Domain.Models;
 using MicroRabbit.Domain.Core.Bus;
@@ -24,14 +24,14 @@ namespace MicroRabbit.Banking.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<List<AccountDto>> GetAccounts()
+        public async Task<List<AccountViewModel>> GetAccounts()
         {
             var accountsList = await _accountRepository.GetAccounts();
-            var accountListDto = _mapper.Map<List<Account>, List<AccountDto>>(accountsList);
+            var accountListDto = _mapper.Map<List<Account>, List<AccountViewModel>>(accountsList);
             return accountListDto;
         }
 
-        public void Transfer(TransferDto transfer)
+        public void Transfer(TransferViewModel transfer)
         {
             var createTransferCommand = new CreateTransferCommand(
                 transfer.FromAccount,
