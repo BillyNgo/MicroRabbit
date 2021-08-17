@@ -4,14 +4,16 @@ using MicroRabbit.Transfer.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MicroRabbit.Transfer.Data.Migrations
 {
     [DbContext(typeof(TransferDbContext))]
-    partial class TransferDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210817124653_Add Timestamp Migration")]
+    partial class AddTimestampMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

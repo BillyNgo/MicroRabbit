@@ -16,6 +16,7 @@ using MicroRabbit.Transfer.Data.Repository;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace MicroRabbit.Infra.IoC
 {
@@ -27,7 +28,7 @@ namespace MicroRabbit.Infra.IoC
             services.AddTransient<IEventBus, RabbitMqBus>(sp =>
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
-                return new RabbitMqBus(sp.GetService<IMediator>(), scopeFactory, configuration.GetSection("MessageBroker:Host").Value);
+                return new RabbitMqBus(sp.GetService<IMediator>(), scopeFactory, configuration.GetSection("MessageBroker:Host").Value, sp.GetService<ILogger<RabbitMqBus>>());
             });
 
             //Subscriptions

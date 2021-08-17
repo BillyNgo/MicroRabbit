@@ -8,6 +8,7 @@ using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Domain.Core.Commands;
 using MicroRabbit.Domain.Core.Events;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -16,19 +17,21 @@ namespace MicroRabbit.Infra.Bus
 {
     public sealed class RabbitMqBus : IEventBus
     {
+        private readonly ILogger<RabbitMqBus> _logger;
         private readonly IMediator _mediator;
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _evenTypes;
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly string _hostName;
 
-        public RabbitMqBus(IMediator mediator, IServiceScopeFactory serviceScopeFactory, string hostName)
+        public RabbitMqBus(IMediator mediator, IServiceScopeFactory serviceScopeFactory, string hostName, ILogger<RabbitMqBus> logger)
         {
             _mediator = mediator;
             _serviceScopeFactory = serviceScopeFactory;
             _handlers = new Dictionary<string, List<Type>>();
             _evenTypes = new List<Type>();
             _hostName = hostName;
+            _logger = logger;
         }
 
         public Task SendCommand<T>(T command) where T : Command
@@ -42,15 +45,13 @@ namespace MicroRabbit.Infra.Bus
             {
                 HostName = _hostName
             };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                var eventName = @event.GetType().Name;
-                channel.QueueDeclare(eventName, false, false, false, null);
-                var message = JsonConvert.SerializeObject(@event);
-                var body = Encoding.UTF8.GetBytes(message);
-                channel.BasicPublish("",eventName,null,body);
-            }
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+            var eventName = @event.GetType().Name;
+            channel.QueueDeclare(eventName, false, false, false, null);
+            var message = JsonConvert.SerializeObject(@event);
+            var body = Encoding.UTF8.GetBytes(message);
+            channel.BasicPublish("",eventName,null,body);
         }
 
         public void Subscribe<T, TH>() where T : Event where TH : IEventHandler<T>
@@ -68,9 +69,10 @@ namespace MicroRabbit.Infra.Bus
                 _handlers.Add(eventName,new List<Type>());
             }
 
-            if (_handlers[eventName].Any(s => s.GetType() == handlerType))
+            if (_handlers[eventName].Any(s => s == handlerType))
             {
-                throw new ArgumentException($"Handler Type {handlerType.Name} already is registred for '{eventName}'",nameof(handlerType));
+                _logger.LogError($"Handler Type {handlerType.Name} already is registered for '{eventName}'", nameof(handlerType));
+                throw new ArgumentException($"Handler Type {handlerType.Name} already is registered for '{eventName}'",nameof(handlerType));
             }
 
             _handlers[eventName].Add(handlerType);
@@ -96,7 +98,7 @@ namespace MicroRabbit.Infra.Bus
             var consumer = new AsyncEventingBasicConsumer(channel);
             consumer.Received += Consumer_Received;
 
-            channel.BasicConsume(eventName, true, consumer);
+            channel.BasicConsume(eventName, false, consumer);
         }
 
         private async Task Consumer_Received(object sender, BasicDeliverEventArgs e)
@@ -107,11 +109,11 @@ namespace MicroRabbit.Infra.Bus
             try
             {
                 await ProcessEvent(eventName, message).ConfigureAwait(false);
+                ((AsyncDefaultBasicConsumer) sender).Model.BasicAck(deliveryTag: e.DeliveryTag, multiple: false);
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-                throw;
+                _logger.LogError(exception, "Something went wrong with Consumer_Received!");
             }
         }
 

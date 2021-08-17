@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MicroRabbit.Banking.Application.Validators;
 using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Transfer.Application.Events;
 using MicroRabbit.Transfer.Domain.Interfaces;
@@ -15,13 +16,21 @@ namespace MicroRabbit.Transfer.Application.Commands
         }
         public Task Handle(TransferCreatedEvent @event)
         {
-            _transferLogRepository.Add(new TransferLog()
+            var validator = new TransferCreatedEventValidator();
+            var result = validator.Validate(@event);
+            if (result.IsValid)
             {
-                FromAccount = @event.FromAccount,
-                ToAccount = @event.ToAccount,
-                TransferAmount = @event.TransferAmount
-            });
-            return Task.CompletedTask;
+                _transferLogRepository.Add(new TransferLog()
+                {
+                    FromAccount = @event.FromAccount,
+                    ToAccount = @event.ToAccount,
+                    TransferAmount = @event.TransferAmount,
+                    TimeStamps = @event.TimeStamps
+                });
+                return Task.FromResult(true);
+            }
+
+            return Task.FromResult(false);
         }
     }
 }

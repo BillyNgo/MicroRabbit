@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MicroRabbit.Transfer.Application.Models
 {
@@ -8,5 +9,6 @@ namespace MicroRabbit.Transfer.Application.Models
         public int FromAccount { get; set; }
         public int ToAccount { get; set; }
         public decimal TransferAmount { get; set; }
+        public DateTime TimeStamps { get; set; }
     }
 }

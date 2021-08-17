@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using MicroRabbit.Transfer.Application.Models;
+using MicroRabbit.Transfer.Application.Events;
 
-namespace MicroRabbit.Banking.Application.Validators.AccountTransfer
+namespace MicroRabbit.Banking.Application.Validators
 {
     /// <summary>
     /// Regular command validation using Fluent Validation
     /// </summary>
-    public class TransferLogDtoValidator : AbstractValidator<TransferLogDto>
+    public class TransferCreatedEventValidator : AbstractValidator<TransferCreatedEvent>
     {
-        public TransferLogDtoValidator()
+        public TransferCreatedEventValidator()
         {
             RuleFor(x => x.FromAccount).NotEmpty().WithMessage("From Account is required!");
             RuleFor(x => x.ToAccount).NotEmpty().WithMessage("To Account is required!");

@@ -1,4 +1,5 @@
-﻿using MicroRabbit.Domain.Core.Events;
+﻿using System;
+using MicroRabbit.Domain.Core.Events;
 
 namespace MicroRabbit.Transfer.Application.Events
 {
@@ -6,13 +7,15 @@ namespace MicroRabbit.Transfer.Application.Events
     {
         public int FromAccount { get; private set; }
         public int ToAccount { get; private set; }
-        public decimal TransferAmount { get; set; }
+        public decimal TransferAmount { get; private set; }
+        public DateTime TimeStamps { get; private set; }
 
-        public TransferCreatedEvent(int fromAccount, int toAccount, decimal transferAmount)
+        public TransferCreatedEvent(int fromAccount, int toAccount, decimal transferAmount, DateTime timeStamps)
         {
             FromAccount = fromAccount;
             ToAccount = toAccount;
             TransferAmount = transferAmount;
+            TimeStamps = timeStamps;
         }
     }
 }
