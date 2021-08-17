@@ -57,7 +57,7 @@ namespace MicroRabbit.Banking.Api
         {
             services.AddFluentValidation(s =>
             {
-                s.RegisterValidatorsFromAssemblyContaining<AccountTransferDto>();
+                s.RegisterValidatorsFromAssemblyContaining<TransferDto>();
                 s.DisableDataAnnotationsValidation = true;
             });
             return services;

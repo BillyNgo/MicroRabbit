@@ -34,7 +34,7 @@ namespace MicroRabbit.Banking.Api.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult<bool>> Post([FromBody] AccountTransferDto accountTransfer)
+        public async Task<ActionResult<bool>> Post([FromBody] TransferDto accountTransfer)
         {
             var results = await _mediator.Send(new CreateTransferCommand(
                 fromAccount: accountTransfer.FromAccount,

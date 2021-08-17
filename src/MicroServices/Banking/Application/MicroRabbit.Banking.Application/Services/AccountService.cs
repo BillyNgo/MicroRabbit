@@ -31,12 +31,12 @@ namespace MicroRabbit.Banking.Application.Services
             return accountListDto;
         }
 
-        public void Transfer(AccountTransferDto accountTransfer)
+        public void Transfer(TransferDto transfer)
         {
             var createTransferCommand = new CreateTransferCommand(
-                accountTransfer.FromAccount,
-                accountTransfer.ToAccount,
-                accountTransfer.TransferAmount);
+                transfer.FromAccount,
+                transfer.ToAccount,
+                transfer.TransferAmount);
 
             _bus.SendCommand(createTransferCommand);
         }
