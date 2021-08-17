@@ -4,16 +4,20 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using MicroRabbit.Banking.Api.Infrastructure.Mapper;
+using MicroRabbit.Banking.Application.Behaviors;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace MicroRabbit.Banking.Api
 {
@@ -72,6 +76,56 @@ namespace MicroRabbit.Banking.Api
 
             return services;
         }
+
+        public static IServiceCollection AddMediatRService(this IServiceCollection services)
+        {
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.Queries.GetAllAccountQuery).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
+            AssemblyScanner
+                .FindValidatorsInAssembly(typeof(Application.Queries.GetAllAccountQuery).Assembly)
+                .ForEach(pair =>
+                {
+                    // RegisterValidatorsFromAssemblyContaing does this:
+                    services.Add(ServiceDescriptor.Transient(pair.InterfaceType, pair.ValidatorType));
+                    // Also register it as its concrete type as well as the interface type
+                    services.Add(ServiceDescriptor.Transient(pair.ValidatorType, pair.ValidatorType));
+                });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            return services;
+        }
+
+        public static IServiceCollection AddCustomConfiguration(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOptions();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetails = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Instance = context.HttpContext.Request.Path,
+                        Status = StatusCodes.Status400BadRequest,
+                        Detail = "Please refer to the errors property for additional details."
+                    };
+
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = { "application/problem+json", "application/problem+xml" }
+                    };
+                };
+            });
+
+            return services;
+        }
     }
     public class Startup
     {
@@ -86,10 +140,12 @@ namespace MicroRabbit.Banking.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomDbContext(Configuration)
+                    .AddCustomIntegrations(Configuration)
+                    .AddCustomConfiguration(Configuration)
                     .AddFluentValidation()
                     .AddSwagger()
                     .AddAutoMapperService()
-                    .AddMediatR(typeof(Startup))
+                    .AddMediatRService()
                     .AddControllers();
 
             RegisterServices(services, Configuration);
@@ -104,11 +160,11 @@ namespace MicroRabbit.Banking.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, BankingDbContext bankingDbContext)
         {
             bankingDbContext.Database.Migrate();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -116,10 +172,13 @@ namespace MicroRabbit.Banking.Api
             app.UseAuthorization();
 
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json","Banking MicroService V1");
             });
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

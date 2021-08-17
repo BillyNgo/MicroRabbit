@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MicroRabbit.Transfer.Domain.Models;
 
 namespace MicroRabbit.Transfer.Domain.Interfaces
 {
-    public interface ITransferRepository
+    public interface ITransferLogRepository
     {
-        IEnumerable<TransferLog> GetTransferLogs();
+        Task<List<TransferLog>> GetTransferLogs();
         void Add(TransferLog transferLog);
     }
 }

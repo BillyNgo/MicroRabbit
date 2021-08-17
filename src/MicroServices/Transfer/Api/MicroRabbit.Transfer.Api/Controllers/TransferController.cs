@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using MicroRabbit.Transfer.Application.Models;
+using MicroRabbit.Transfer.Application.Queries;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Transfer.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,17 +16,19 @@ namespace MicroRabbit.Transfer.Api.Controllers
     [Route("[controller]")]
     public class TransferController : ControllerBase
     {
-        private readonly ITransferRepository _transferRepository;
-
-        public TransferController(ITransferRepository transferRepository)
+        private readonly ILogger<TransferController> _logger;
+        private readonly IMediator _mediator;
+        public TransferController(IMediator mediator, ILogger<TransferController> logger)
         {
-            _transferRepository = transferRepository;
+            _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<TransferLog>> Get()
+        public async Task<ActionResult<List<TransferLogDto>>> Get()
         {
-            return Ok(_transferRepository.GetTransferLogs());
+            var results = await _mediator.Send(new GetAllTransferLogQuery());
+            return Ok(results);
         }
     }
 }

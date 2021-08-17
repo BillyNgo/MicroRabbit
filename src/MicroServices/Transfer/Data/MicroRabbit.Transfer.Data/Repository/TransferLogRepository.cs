@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MicroRabbit.Transfer.Data.Context;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Transfer.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MicroRabbit.Transfer.Data.Repository
 {
-    public class TransferLogRepository : ITransferRepository
+    public class TransferLogRepository : ITransferLogRepository
     {
         private readonly TransferDbContext _dbContext;
 
@@ -20,9 +22,9 @@ namespace MicroRabbit.Transfer.Data.Repository
             _dbContext.SaveChanges();
         }
 
-        public IEnumerable<TransferLog> GetTransferLogs()
+        public Task<List<TransferLog>> GetTransferLogs()
         {
-            return _dbContext.TransferLogs;
+            return _dbContext.TransferLogs.ToListAsync();
         }
 
         

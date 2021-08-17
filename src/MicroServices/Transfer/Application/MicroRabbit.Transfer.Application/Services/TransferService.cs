@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Transfer.Application.Interfaces;
 using MicroRabbit.Transfer.Domain.Interfaces;
@@ -9,17 +10,17 @@ namespace MicroRabbit.Transfer.Application.Services
     public class TransferService : ITransferService
     {
         private readonly IEventBus _bus;
-        private readonly ITransferRepository _transferRepository;
+        private readonly ITransferLogRepository _transferLogRepository;
 
-        public TransferService(IEventBus bus, ITransferRepository transferRepository)
+        public TransferService(IEventBus bus, ITransferLogRepository transferLogRepository)
         {
             _bus = bus;
-            _transferRepository = transferRepository;
+            _transferLogRepository = transferLogRepository;
         }
 
-        public IEnumerable<TransferLog> GetTransferLogs()
+        public async Task<List<TransferLog>> GetTransferLogs()
         {
-            return _transferRepository.GetTransferLogs();
+            return await _transferLogRepository.GetTransferLogs();
         }
     }
 }

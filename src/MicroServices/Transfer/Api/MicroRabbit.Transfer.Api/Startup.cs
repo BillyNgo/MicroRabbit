@@ -1,17 +1,26 @@
 using System;
+using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Infra.IoC;
+using MicroRabbit.Transfer.Api.Infrastructure.Mapper;
+using MicroRabbit.Transfer.Application.Behaviors;
+using MicroRabbit.Transfer.Application.Commands;
+using MicroRabbit.Transfer.Application.Events;
+using MicroRabbit.Transfer.Application.Models;
 using MicroRabbit.Transfer.Data.Context;
-using MicroRabbit.Transfer.Domain.EventHandlers;
-using MicroRabbit.Transfer.Domain.Events;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace MicroRabbit.Transfer.Api
 {
@@ -47,6 +56,80 @@ namespace MicroRabbit.Transfer.Api
             });
             return services;
         }
+
+        public static IServiceCollection AddFluentValidation(this IServiceCollection services)
+        {
+            services.AddFluentValidation(s =>
+            {
+                s.RegisterValidatorsFromAssemblyContaining<TransferLogDto>();
+                s.DisableDataAnnotationsValidation = true;
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddAutoMapperService(this IServiceCollection services)
+        {
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ApiAutoMappingProfile());
+            });
+
+            var mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            return services;
+        }
+
+        public static IServiceCollection AddMediatRService(this IServiceCollection services)
+        {
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.Queries.GetAllTransferLogQuery).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
+            AssemblyScanner
+                .FindValidatorsInAssembly(typeof(Application.Queries.GetAllTransferLogQuery).Assembly)
+                .ForEach(pair =>
+                {
+                    // RegisterValidatorsFromAssemblyContaing does this:
+                    services.Add(ServiceDescriptor.Transient(pair.InterfaceType, pair.ValidatorType));
+                    // Also register it as its concrete type as well as the interface type
+                    services.Add(ServiceDescriptor.Transient(pair.ValidatorType, pair.ValidatorType));
+                });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            return services;
+        }
+
+        public static IServiceCollection AddCustomConfiguration(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOptions();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetails = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Instance = context.HttpContext.Request.Path,
+                        Status = StatusCodes.Status400BadRequest,
+                        Detail = "Please refer to the errors property for additional details."
+                    };
+
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = { "application/problem+json", "application/problem+xml" }
+                    };
+                };
+            });
+
+            return services;
+        }
     }
 
     public class Startup
@@ -62,8 +145,12 @@ namespace MicroRabbit.Transfer.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomDbContext(Configuration)
+                .AddCustomIntegrations(Configuration)
+                .AddCustomConfiguration(Configuration)
+                .AddFluentValidation()
                 .AddSwagger()
-                .AddMediatR(typeof(Startup))
+                .AddAutoMapperService()
+                .AddMediatRService()
                 .AddControllers();
 
             RegisterServices(services, Configuration);
@@ -87,10 +174,13 @@ namespace MicroRabbit.Transfer.Api
             app.UseAuthorization();
 
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transfer Microservice V1");
             });
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {
