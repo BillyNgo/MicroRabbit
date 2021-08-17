@@ -21,7 +21,7 @@ This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with Rabbit
    * [MicroRabbit.Domain.Core](./src/MicroRabbit.Domain.Core/MicroRabbit.Domain.Core)
  * [MicroRabbit.Infra.CrossCutting.Bus](./src/MicroRabbit.Infra.CrossCutting.Bus)
    * [MicroRabbit.Infra.Bus](./src/MicroRabbit.Infra.CrossCutting.Bus/MicroRabbit.Infra.Bus)
- * [MicroRabbit.Infra.CrossCutting.IoC](./src/Infra.IoC)
+ * [MicroRabbit.Infra.CrossCutting.IoC](./src/MicroRabbit.Infra.CrossCutting.IoC)
    * [MicroRabbit.Infra.IoC](./src/MicroRabbit.Infra.CrossCutting.IoC/MicroRabbit.Infra.IoC)
  * [Microservices](./src/MicroServices)
    * [Banking](./src/MicroServices/Banking)
