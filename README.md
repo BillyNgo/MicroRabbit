@@ -61,12 +61,15 @@ This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with Rabbit
 - Mediator
 - Options Pattern
 
+## Dependencies:
+![](imgs/dependencies.jpg)
+
 ## Project dependencies:
-![](imgs/dependencies.png)
+![](imgs/project-dependencies.jpg)
 
 ## Code Flow:
 ![](imgs/flowchart.png)
-![](imgs/code-flow.png)
+![](imgs/code-flow.jpg)
 
 ## Repository & Unit Of Work:
 ![](imgs/custom-repo-versus-db-context.png)
