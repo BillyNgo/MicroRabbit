@@ -17,12 +17,12 @@ This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with Rabbit
 
 ## Projects Treeview
 
- * [Domain](./src/Domain)
-   * [MicroRabbit.Domain.Core](./src/Domain/MicroRabbit.Domain.Core)
- * [Infra.Bus](./src/Infra.Bus)
-   * [MicroRabbit.Infra.Bus](./src/Infra.Bus/MicroRabbit.Infra.Bus)
- * [Infra.Ioc](./src/Infra.IoC)
-   * [MicroRabbit.Infra.IoC](./src/Infra.IoC/MicroRabbit.Infra.IoC)
+ * [MicroRabbit.Domain.Core](./src/MicroRabbit.Domain.Core)
+   * [MicroRabbit.Domain.Core](./src/MicroRabbit.Domain.Core/MicroRabbit.Domain.Core)
+ * [MicroRabbit.Infra.CrossCutting.Bus](./src/MicroRabbit.Infra.CrossCutting.Bus)
+   * [MicroRabbit.Infra.Bus](./src/MicroRabbit.Infra.CrossCutting.Bus/MicroRabbit.Infra.Bus)
+ * [MicroRabbit.Infra.CrossCutting.IoC](./src/Infra.IoC)
+   * [MicroRabbit.Infra.IoC](./src/MicroRabbit.Infra.CrossCutting.IoC/MicroRabbit.Infra.IoC)
  * [Microservices](./src/MicroServices)
    * [Banking](./src/MicroServices/Banking)
      * [Api](./src/MicroServices/Banking/Api)
