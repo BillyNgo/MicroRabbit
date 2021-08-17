@@ -67,7 +67,7 @@ This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with Rabbit
 ![](imgs/Transfer_Microservice_Swagger_UI.png)
 
 - **MicroRabbit.MVC** project is listeing on localhost port `5005` (https) and `5004` (http)
-![](imgs/Banking_Microservice_MVC_Updated.png)
+![](imgs/Banking_Microservice_MVC.png)
 
 ### Installation
 
