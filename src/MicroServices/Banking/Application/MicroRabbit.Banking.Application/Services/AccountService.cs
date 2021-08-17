@@ -25,7 +25,7 @@ namespace MicroRabbit.Banking.Application.Services
 
         public List<AccountDto> GetAccounts()
         {
-            var accountListDto = _mapper.Map<List<Account>, List<AccountDto>>(_accountRepository.GetAccounts().ToList());
+            var accountListDto = _mapper.Map<List<Account>, List<AccountDto>>(_accountRepository.ListAll());
             return accountListDto;
         }
 

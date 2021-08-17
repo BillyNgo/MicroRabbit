@@ -5,18 +5,18 @@ using MicroRabbit.Banking.Domain.Models;
 
 namespace MicroRabbit.Banking.Data.Repository
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
-        private BankingDbContext _ctx;
+        private readonly BankingDbContext _dbContext;
 
-        public AccountRepository(BankingDbContext ctx)
+        public AccountRepository(BankingDbContext dbContext) :base(dbContext)
         {
-            _ctx = ctx;
+            _dbContext = dbContext;
         }
 
         public IEnumerable<Account> GetAccounts()
         {
-            return _ctx.Accounts;
+            return _dbContext.Accounts;
         }
     }
 }
