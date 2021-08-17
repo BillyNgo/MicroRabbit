@@ -3,7 +3,8 @@ using MicroRabbit.Banking.Domain.Models;
 
 namespace MicroRabbit.Banking.Domain.Interfaces
 {
-    public interface IAccountRepository : IRepository<Account>
+    public interface IAccountRepository
     {
+        IEnumerable<Account> GetAccounts();
     }
 }
