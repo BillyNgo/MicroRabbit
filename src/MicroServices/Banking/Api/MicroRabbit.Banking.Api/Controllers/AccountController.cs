@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
+using MicroRabbit.Banking.Application.Commands;
 using MicroRabbit.Banking.Application.Interfaces;
 using MicroRabbit.Banking.Application.Models;
-using MicroRabbit.Banking.Domain.Commands;
+using MicroRabbit.Banking.Application.Queries;
 using MicroRabbit.Banking.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,28 +17,29 @@ namespace MicroRabbit.Banking.Api.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly IAccountService _accountService;
+        private readonly IMapper _mapper;
         private readonly IMediator _mediator;
-        public AccountController(IAccountService accountService, IMediator mediator, ILogger<AccountController> logger)
+        public AccountController(IMediator mediator, ILogger<AccountController> logger, IMapper mapper)
         {
-            _accountService = accountService;
             _mediator = mediator;
             _logger = logger;
+            _mapper = mapper;
         }
 
         // GET api/banking
         [HttpGet]
         public async Task<ActionResult<List<Account>>> Get()
         {
-            var results = await _accountService.GetAccounts();
-            return Ok(results);
+            var result = await _mediator.Send(new AccountQuery());
+            return Ok(result);
         }
         
         [HttpPost]
-        public IActionResult Post([FromBody] TransferViewModel accountTransfer)
+        public async Task<bool> Post([FromBody] TransferViewModel accountTransfer)
         {
-            _accountService.Transfer(accountTransfer);
-            return Ok(accountTransfer);
+            var command = _mapper.Map<TransferViewModel, CreateTransferCommand>(accountTransfer);
+            var result = await _mediator.Send(command);
+            return result;
         }
         
     }

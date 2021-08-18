@@ -1,10 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using MicroRabbit.Banking.Domain.Events;
+using MicroRabbit.Banking.Application.Commands;
+using MicroRabbit.Banking.Application.Events;
 using MicroRabbit.Domain.Core.Bus;
 
-namespace MicroRabbit.Banking.Domain.Commands
+namespace MicroRabbit.Banking.Application.CommandHandlers
 {
     public class CreateTransferCommandHandler : IRequestHandler<CreateTransferCommand, bool>
     {

@@ -5,6 +5,7 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using MicroRabbit.Banking.Api.Infrastructure.Mapper;
 using MicroRabbit.Banking.Application.Behaviors;
+using MicroRabbit.Banking.Application.Configurations.Mapper;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.CrossCutting.Ioc;
@@ -69,6 +70,7 @@ namespace MicroRabbit.Banking.Api
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new ApiAutoMappingProfile());
+                mc.AddProfile(new ApplicationAutoMappingProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();
@@ -79,10 +81,10 @@ namespace MicroRabbit.Banking.Api
 
         public static IServiceCollection AddMediatRService(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly, typeof(Domain.Commands.CreateTransferCommandHandler).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.CommandHandlers.CreateTransferCommandHandler).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
             AssemblyScanner
-                .FindValidatorsInAssembly(typeof(Domain.Commands.CreateTransferCommandHandler).Assembly)
+                .FindValidatorsInAssembly(typeof(Application.CommandHandlers.CreateTransferCommandHandler).Assembly)
                 .ForEach(pair =>
                 {
                     // RegisterValidatorsFromAssemblyContaining does this:

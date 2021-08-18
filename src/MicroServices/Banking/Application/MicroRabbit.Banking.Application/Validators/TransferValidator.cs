@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MicroRabbit.Banking.Domain.Commands;
+using MicroRabbit.Banking.Application.Commands;
 
 namespace MicroRabbit.Banking.Application.Validators
 {

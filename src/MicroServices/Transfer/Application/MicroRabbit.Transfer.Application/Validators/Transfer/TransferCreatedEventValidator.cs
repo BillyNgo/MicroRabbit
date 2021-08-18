@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using MicroRabbit.Transfer.Domain.Events;
+using MicroRabbit.Transfer.Application.Events;
 
-namespace MicroRabbit.Transfer.Domain.Validators
+namespace MicroRabbit.Transfer.Application.Validators
 {
     /// <summary>
     /// Regular command validation using Fluent Validation

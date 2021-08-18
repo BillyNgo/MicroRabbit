@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MicroRabbit.Banking.Application.Commands;
 using MicroRabbit.Banking.Application.Models;
 using MicroRabbit.Banking.Domain.Models;
 
@@ -8,8 +9,8 @@ namespace MicroRabbit.Banking.Api.Infrastructure.Mapper
     {
         public ApiAutoMappingProfile()
         {
-            CreateMap<Account, AccountViewModel>();
-            CreateMap<AccountViewModel, Account>();
+            CreateMap<TransferViewModel, CreateTransferCommand>();
+            CreateMap<CreateTransferCommand, TransferViewModel>();
         }
     }
 }

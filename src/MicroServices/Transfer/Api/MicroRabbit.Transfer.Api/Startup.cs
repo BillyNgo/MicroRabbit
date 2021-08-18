@@ -7,10 +7,11 @@ using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Infra.CrossCutting.Ioc;
 using MicroRabbit.Transfer.Api.Infrastructure.Mapper;
 using MicroRabbit.Transfer.Application.Behaviors;
+using MicroRabbit.Transfer.Application.Configurations.Mapper;
+using MicroRabbit.Transfer.Application.EventHandler;
+using MicroRabbit.Transfer.Application.Events;
 using MicroRabbit.Transfer.Application.Models;
 using MicroRabbit.Transfer.Data.Context;
-using MicroRabbit.Transfer.Domain.Commands;
-using MicroRabbit.Transfer.Domain.Events;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -73,6 +74,7 @@ namespace MicroRabbit.Transfer.Api
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new ApiAutoMappingProfile());
+                mc.AddProfile(new ApplicationAutoMappingProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();
@@ -83,10 +85,10 @@ namespace MicroRabbit.Transfer.Api
 
         public static IServiceCollection AddMediatRService(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly, typeof(Domain.Commands.TransferCreatedEventHandler).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly, typeof(Application.EventHandler.TransferCreatedEventHandler).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
             AssemblyScanner
-                .FindValidatorsInAssembly(typeof(Domain.Commands.TransferCreatedEventHandler).Assembly)
+                .FindValidatorsInAssembly(typeof(Application.EventHandler.TransferCreatedEventHandler).Assembly)
                 .ForEach(pair =>
                 {
                     // RegisterValidatorsFromAssemblyContaining does this:

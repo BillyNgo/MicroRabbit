@@ -1,44 +1,33 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using MicroRabbit.Banking.Application.Commands;
-using MicroRabbit.Banking.Application.Interfaces;
+using MicroRabbit.Banking.Application.Events;
 using MicroRabbit.Banking.Application.Models;
+using MicroRabbit.Banking.Application.Queries;
 using MicroRabbit.Banking.Domain.Interfaces;
 using MicroRabbit.Banking.Domain.Models;
 using MicroRabbit.Domain.Core.Bus;
 
-namespace MicroRabbit.Banking.Application.Services
+namespace MicroRabbit.Banking.Application.QueryHandlers
 {
-    public class AccountService : IAccountService
+    public class AccountQueryHandler : IRequestHandler<AccountQuery, List<AccountViewModel>>
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IMapper _mapper;
-        private readonly IEventBus _bus;
 
-        public AccountService(IAccountRepository accountRepository, IEventBus bus, IMapper mapper)
+        public AccountQueryHandler(IAccountRepository accountRepository, IMapper mapper)
         {
             _accountRepository = accountRepository;
-            _bus = bus;
             _mapper = mapper;
         }
-
-        public async Task<List<AccountViewModel>> GetAccounts()
+        public async Task<List<AccountViewModel>> Handle(AccountQuery query, CancellationToken cancellationToken)
         {
             var accountsList = await _accountRepository.GetAccounts();
             var accountListDto = _mapper.Map<List<Account>, List<AccountViewModel>>(accountsList);
             return accountListDto;
-        }
-
-        public void Transfer(TransferViewModel transfer)
-        {
-            var createTransferCommand = new CreateTransferCommand(
-                transfer.FromAccount,
-                transfer.ToAccount,
-                transfer.TransferAmount);
-
-            _bus.SendCommand(createTransferCommand);
         }
     }
 }

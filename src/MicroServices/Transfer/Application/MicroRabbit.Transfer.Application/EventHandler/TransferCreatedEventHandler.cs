@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using MicroRabbit.Domain.Core.Bus;
-using MicroRabbit.Transfer.Domain.Events;
+using MicroRabbit.Transfer.Application.Events;
+using MicroRabbit.Transfer.Application.Validators;
 using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Transfer.Domain.Models;
-using MicroRabbit.Transfer.Domain.Validators;
 
-namespace MicroRabbit.Transfer.Domain.Commands
+namespace MicroRabbit.Transfer.Application.EventHandler
 {
     public class TransferCreatedEventHandler : IEventHandler<TransferCreatedEvent>
     {
