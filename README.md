@@ -46,17 +46,52 @@ This is a sample for NVG Backend Guild-day:  `.NET Core Microservice with Rabbit
    * [MicroRabbit.MVC](./src/Presentation/MicroRabbit.MVC)
 
 ## Architecture:
-
+![](imgs/architecture.png)
 - Full architecture with responsibility separation concerns, SOLID and Clean Code
 - Domain Driven Design (Layers and Domain Model Pattern)
 - Domain Events
 - Domain Notification
 - Domain Validations
 - CQRS (Imediate Consistency)
+- Inversion of Control / Dependency injection
 - Event Sourcing (To be implemented)
 - Unit of Work
-- Repository
-- RabbitMQ messaging
+- Repository & Generic Repository
+- ORM
+- Mediator
+- Options Pattern
+
+## Dependencies:
+![](imgs/dependencies.jpg)
+
+## Project dependencies:
+![](imgs/project-dependencies.jpg)
+
+## Code Flow:
+![](imgs/flowchart.png)
+![](imgs/code-flow.jpg)
+
+## Repository & Unit Of Work:
+![](imgs/custom-repo-versus-db-context.png)
+
+## Techical Stack:
+- ASP.NET Core 5.0 (with .NET Core 5.0)
+- ASP.NET WebApi Core
+- ASP.NET Identity Core
+- Entity Framework Core
+- .NET Core Native DI
+- AutoMapper
+- FluentValidator
+- MediatR
+- Swagger UI
+- MSSQL
+- xUnit
+- Moq
+- Fluent Assertions
+- Serilog
+- Polly
+- RabbitMQ
+- MassTransit
 
 ## Project notes
 
